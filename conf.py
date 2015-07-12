@@ -48,8 +48,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Mill'
-copyright = '2015'
-author = ''
+copyright = '2015, Mill contributors'
+author = 'Mill contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
