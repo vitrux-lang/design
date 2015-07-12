@@ -17,7 +17,7 @@ following grammar::
 
     string-type-descriptor = "S" ;
 
-    tuple-type-descriptor = "T" { type-descriptor }  ";" ;
+    tuple-type-descriptor = "T" { type-descriptor } ";" ;
 
     subroutine-type-descriptor = "F" { type-descriptor } type-descriptor ";" ;
 
