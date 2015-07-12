@@ -33,3 +33,28 @@ Description
 The ``brk`` instruction advances the program counter, pauses execution of the
 performing thread, and notifies the debugger. If the VM is not attached to a
 debugger, it is terminated.
+
+call
+~~~~
+
+Encoding
+''''''''
+
+::
+
+    { opcode: call, arguments: *arguments }
+
+Evaluation Stack
+''''''''''''''''
+
+…, [argument 1, [argument 2 …]] → …
+
+Description
+'''''''''''
+
+The ``call`` instruction advances the program counter, pops ``*arguments``
+arguments off the stack, pops the callee off the stack, pushes a new stack
+frame onto the top of the call stack with the start of the body of the callee
+as the program counter and the arguments popped off the stack as arguments.
+The argument last popped off the stack is the first argument passed to the
+callee.
