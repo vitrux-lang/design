@@ -53,6 +53,12 @@
 <li><a class="reference internal" href="#description">Description</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#call">call</a><ul>
+<li><a class="reference internal" href="#id1">Encoding</a></li>
+<li><a class="reference internal" href="#id2">Evaluation Stack</a></li>
+<li><a class="reference internal" href="#id3">Description</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -119,6 +125,28 @@ results in undefined behavior.</p>
 <p>The <code class="docutils literal"><span class="pre">brk</span></code> instruction advances the program counter, pauses execution of the
 performing thread, and notifies the debugger. If the VM is not attached to a
 debugger, it is terminated.</p>
+</div>
+</div>
+<div class="section" id="call">
+<h3>call<a class="headerlink" href="#call" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Encoding<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre>{ opcode: call, arguments: *arguments }
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Evaluation Stack<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>…, [argument 1, [argument 2 …]] → …</p>
+</div>
+<div class="section" id="id3">
+<h4>Description<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">call</span></code> instruction advances the program counter, pops <code class="docutils literal"><span class="pre">*arguments</span></code>
+arguments off the stack, pops the callee off the stack, pushes a new stack
+frame onto the top of the call stack with the start of the body of the callee
+as the program counter and the arguments popped off the stack as arguments.
+The argument last popped off the stack is the first argument passed to the
+callee.</p>
 </div>
 </div>
 </div>
