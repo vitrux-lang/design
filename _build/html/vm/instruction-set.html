@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Types &mdash; Mill 0.0.1 documentation</title>
+    <title>Instruction Set &mdash; Mill 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -25,8 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Mill 0.0.1 documentation" href="../index.html" />
     <link rel="up" title="Virtual Machine" href="../vm.html" />
-    <link rel="next" title="Instruction Set" href="instruction-set.html" />
-    <link rel="prev" title="Module File Format" href="module-file-format.html" /> 
+    <link rel="prev" title="Types" href="types.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -36,10 +35,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="instruction-set.html" title="Instruction Set"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="module-file-format.html" title="Module File Format"
+          <a href="types.html" title="Types"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Mill 0.0.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../vm.html" accesskey="U">Virtual Machine</a> &raquo;</li> 
@@ -49,22 +45,27 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Types</a><ul>
-<li><a class="reference internal" href="#type-descriptors">Type Descriptors</a></li>
+<li><a class="reference internal" href="#">Instruction Set</a><ul>
+<li><a class="reference internal" href="#instructions">Instructions</a><ul>
+<li><a class="reference internal" href="#brk">brk</a><ul>
+<li><a class="reference internal" href="#encoding">Encoding</a></li>
+<li><a class="reference internal" href="#evaluation-stack">Evaluation Stack</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="module-file-format.html"
-                        title="previous chapter">Module File Format</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="instruction-set.html"
-                        title="next chapter">Instruction Set</a></p>
+  <p class="topless"><a href="types.html"
+                        title="previous chapter">Types</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/vm/types.txt"
+      <li><a href="../_sources/vm/instruction-set.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -89,30 +90,37 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="types">
-<h1>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h1>
-<p>There is a close mapping between types in Mill and in the VM.</p>
-<div class="section" id="type-descriptors">
-<h2>Type Descriptors<a class="headerlink" href="#type-descriptors" title="Permalink to this headline">¶</a></h2>
-<p>Types are referred to using <em>type descriptors</em>. Type descriptors adhere to the
-following grammar:</p>
-<div class="highlight-python"><div class="highlight"><pre>type-descriptor = string-type-descriptor
-                | tuple-type-descriptor
-                | subroutine-type-descriptor
-                | named-type-descriptor
-                ;
-
-string-type-descriptor = &quot;S&quot; ;
-
-tuple-type-descriptor = &quot;T&quot; { type-descriptor } &quot;;&quot; ;
-
-subroutine-type-descriptor = &quot;F&quot; { type-descriptor } type-descriptor &quot;;&quot; ;
-
-named-type-descriptor = &quot;N&quot; { «any character except &#39;;&#39;» } &quot;;&quot; ;
+  <div class="section" id="instruction-set">
+<h1>Instruction Set<a class="headerlink" href="#instruction-set" title="Permalink to this headline">¶</a></h1>
+<p>Mill instructions operate on Mill values, local variables and a per-thread
+evaluation stack.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">There is currently no bytecode verification step. Any attempt to execute an
+invalid instruction (including ill-typed combinations of instructions)
+results in undefined behavior.</p>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="brk">
+<h3>brk<a class="headerlink" href="#brk" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="encoding">
+<h4>Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span> <span class="n">opcode</span><span class="p">:</span> <span class="n">brk</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>Type descriptors must be a valid ASCII encoding and must not contain any
-whitespace.</p>
+</div>
+<div class="section" id="evaluation-stack">
+<h4>Evaluation Stack<a class="headerlink" href="#evaluation-stack" title="Permalink to this headline">¶</a></h4>
+<p>… → …</p>
+</div>
+<div class="section" id="description">
+<h4>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal"><span class="pre">brk</span></code> instruction advances the program counter, pauses execution of the
+performing thread, and notifies the debugger. If the VM is not attached to a
+debugger, it is terminated.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -129,10 +137,7 @@ whitespace.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="instruction-set.html" title="Instruction Set"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="module-file-format.html" title="Module File Format"
+          <a href="types.html" title="Types"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Mill 0.0.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../vm.html" >Virtual Machine</a> &raquo;</li> 
