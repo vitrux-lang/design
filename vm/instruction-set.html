@@ -137,7 +137,7 @@ debugger, it is terminated.</p>
 </div>
 <div class="section" id="id2">
 <h4>Evaluation Stack<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>…, [argument 1, [argument 2 …]] → …</p>
+<p>…, [argument 1, [argument 2 …]] → returnValue …</p>
 </div>
 <div class="section" id="id3">
 <h4>Description<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
@@ -146,7 +146,7 @@ arguments off the stack, pops the callee off the stack, pushes a new stack
 frame onto the top of the call stack with the start of the body of the callee
 as the program counter and the arguments popped off the stack as arguments.
 The argument last popped off the stack is the first argument passed to the
-callee.</p>
+callee. When the callee returns, its return value is pushed onto the stack.</p>
 </div>
 </div>
 </div>

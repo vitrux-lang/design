@@ -47,7 +47,7 @@ Encoding
 Evaluation Stack
 ''''''''''''''''
 
-…, [argument 1, [argument 2 …]] → …
+…, [argument 1, [argument 2 …]] → returnValue …
 
 Description
 '''''''''''
@@ -57,4 +57,4 @@ arguments off the stack, pops the callee off the stack, pushes a new stack
 frame onto the top of the call stack with the start of the body of the callee
 as the program counter and the arguments popped off the stack as arguments.
 The argument last popped off the stack is the first argument passed to the
-callee.
+callee. When the callee returns, its return value is pushed onto the stack.
