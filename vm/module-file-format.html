@@ -8,7 +8,7 @@
     
     <title>Module File Format &mdash; Mill 0.0.1 documentation</title>
     
-    <link rel="stylesheet" href="../_static/traditional.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -44,32 +44,7 @@
         <li class="nav-item nav-item-0"><a href="../index.html">Mill 0.0.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../vm.html" accesskey="U">Virtual Machine</a> &raquo;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="module-file-format">
-<h1>Module File Format<a class="headerlink" href="#module-file-format" title="Permalink to this headline">¶</a></h1>
-<p>Modules are described in YAML documents as mappings. The following keys must be
-present:</p>
-<ul class="simple">
-<li><em>name</em>: the fully qualified name of the module,</li>
-<li><em>imports</em>: the fully qualified names of the modules this module depends on,</li>
-<li><em>unions</em>: the union types defined by this module,</li>
-<li><em>structs</em>: the struct types defined by this module,</li>
-<li><em>aliases</em>: the type aliases defined by this module,</li>
-<li><em>subs</em>: the subroutines defined by this module,</li>
-<li><em>foreignSubs</em>: the foreign subroutines declared by this module.</li>
-</ul>
-</div>
-
-
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
@@ -98,6 +73,31 @@ present:</p>
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-file-format">
+<h1>Module File Format<a class="headerlink" href="#module-file-format" title="Permalink to this headline">¶</a></h1>
+<p>Modules are described in YAML documents as mappings. The following keys must be
+present:</p>
+<ul class="simple">
+<li><em>name</em>: the fully qualified name of the module,</li>
+<li><em>imports</em>: the fully qualified names of the modules this module depends on,</li>
+<li><em>unions</em>: the union types defined by this module,</li>
+<li><em>structs</em>: the struct types defined by this module,</li>
+<li><em>aliases</em>: the type aliases defined by this module,</li>
+<li><em>subs</em>: the subroutines defined by this module,</li>
+<li><em>foreignSubs</em>: the foreign subroutines declared by this module.</li>
+</ul>
+</div>
+
+
+          </div>
         </div>
       </div>
       <div class="clearer"></div>
